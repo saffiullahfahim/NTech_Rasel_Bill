@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NTech Rasel's Bill Compose</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="shortcut icon" href="./assets/img/icon.png" type="image/png" />
+  </head>
+
+  <body class="A4">
+    <div class="inputdata">
+      <iframe name="hide" style="display: none"></iframe>
+      <form target="hide">
+        <div
+          style="
+            font: 700 20px 'Nirmala UI';
+            text-align: center;
+            border-bottom: 1px solid #000;
+            padding: 5px;
+          "
+        >
+          Data Input
+        </div>
+        <span
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: 10px;
+            margin-left: 10px;
+          "
+          >Bill No. -
+          <input
+            autocomplete="off"
+            id="BillNo"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 10px;
+              outline: none;
+              width: 30px;
+              text-align: center;
+            "
+        /></span>
+        <span
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: -3px;
+            margin-left: 120px;
+          "
+          >Session -
+          <input
+            autocomplete="off"
+            id="Session"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 10px;
+              outline: none;
+              width: 150px;
+              text-align: center;
+            "
+        /></span>
+        <div
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: 20px;
+            margin-left: 10px;
+          "
+        >
+          Date -
+          <input
+            autocomplete="off"
+            id="month"
+            placeholder="Month"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 20px;
+              outline: none;
+              width: 100px;
+              text-align: center;
+            "
+          /><input
+            id="day"
+            placeholder="Day"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 20px;
+              outline: none;
+              width: 100px;
+              text-align: center;
+              margin-left: 15px;
+            "
+          /><input
+            id="year"
+            placeholder="Year"
+            value="2022"
+            style="
+              margin-left: 15px;
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 20px;
+              outline: none;
+              width: 157px;
+              text-align: center;
+            "
+          />
+        </div>
+        <span
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: 10px;
+            margin-left: 10px;
+          "
+          >Vehicle No. -
+          <input
+            autocomplete="off"
+            id="vehicle"
+            list="lists"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 10px;
+              outline: none;
+              width: 150px;
+              text-align: center;
+            "
+        /></span>
+        <span
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: -3px;
+            margin-left: 10px;
+          "
+          >Liter -
+          <input
+            autocomplete="off"
+            id="liter"
+            type="number"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              margin-top: 10px;
+              outline: none;
+              width: 135px;
+              text-align: center;
+            "
+        /></span>
+        <div style="float: right;">
+        <span
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px;
+            margin-top: -3px;
+            margin-left: 10px;
+            margin-bottom: 20px;
+          "
+          >Rate -
+          <input
+            autocomplete="off"
+            id="rate"
+            type="number"
+            value="109"
+            style="
+              border: 1.5px solid #000;
+              font: 700 15px 'Nirmala UI';
+              padding: 3px;
+              outline: none;
+              width: 135px;
+              text-align: center;
+              margin-bottom: 20px;
+              margin-top: 20px;
+              margin-right: 15px;
+            "
+        /></span>
+      </div>
+
+        <datalist id="lsts">
+          <option value="14-0660"></option>
+          <option value="14-2603"></option>
+          <option value="11-0006"></option>
+          <option value="14-2633"></option>
+          <option value="14-2399"></option>
+        </datalist>
+
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 20px;">
+          <span
+            onclick="vehicle.value = '14-0660'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              margin-top: 5px;
+              cursor: pointer;
+            "
+            ><b>1 :</b> 14-0660</span
+          >
+          <span
+          onclick="vehicle.value = '11-0006'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              cursor: pointer;
+              margin-top: 5px;
+            "
+            ><b>2 :</b> 11-0006</span
+          >
+          <span
+          onclick="vehicle.value = '14-2603'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              margin-top: 5px;
+              cursor: pointer;
+            "
+            ><b>3 :</b> 14-2603</span
+          >
+
+          <span
+          onclick="vehicle.value = '14-2633'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              margin-top: 5px;
+              cursor: pointer;
+            "
+            ><b>4 :</b> 14-2633</span
+          >
+          <span
+          onclick="vehicle.value = '14-2399'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              margin-top: 5px;
+              cursor: pointer;
+            "
+            ><b>5 :</b> 14-2399</span
+          >
+        </div>
+        <input type="hidden" autocomplete="off" id="AddBtn" />
+        <button
+          id="ADDBTN"
+          style="
+            font: 700 15px 'Nirmala UI';
+            padding: 3px 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            float: right;
+            cursor: pointer;
+            margin-right: 15px;
+            cursor: pointer;
+          "
+        >
+          Add</button
+        ><br /><br /><br />
+        <div style="margin: auto; text-align: center; width: max-content">
+          <button
+            id="Print"
+            style="
+              font: 700 15px 'Nirmala UI';
+              padding: 3px 50px;
+              margin-bottom: 20px;
+              cursor: pointer;
+            "
+          >
+            Print
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="header">
+      <section class="sheet" style="padding: 7mm">
+        <img src="./assets/img/header.jpg" />
+        <div class="h"></div>
+        <div id="billno" contenteditable class="n l">Bill No. - 00</div>
+        <div id="session" contenteditable class="n r">Month 2022</div>
+        <div contenteditable id="interval" class="i">00</div>
+        <table id="table">
+          <tr>
+            <th>No.</th>
+            <th>Date</th>
+            <th>Vehicle No</th>
+            <th>Liter</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Remarks</th>
+          </tr>
+          <tr id="Total">
+            <th></th>
+            <th></th>
+            <th contenteditable="">Total</th>
+            <th contenteditable="">00</th>
+            <th></th>
+            <th contenteditable="">00</th>
+            <th></th>
+          </tr>
+        </table>
+        <div id="footer">
+          <div contenteditable class="iw">
+            In words - <span id="inword"></span> Taka Only.
+          </div>
+          <div class="f">নিবেদক</div>
+        </div>
+      </section>
+    </div>
+  </body>
+
+  <script src="./assets/js/main.js"></script>
+</html>

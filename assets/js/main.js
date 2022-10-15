@@ -78,19 +78,19 @@ date1 = "";
 totalliter = 0;
 totaltaka = 0;
 function Add() {
-  if (vehicle.value == "1") {
+  if (vehicle.value == "60") {
     vehicle.value = "14-0660";
   }
-  if (vehicle.value == "2") {
+  if (vehicle.value == "05") {
     vehicle.value = "11-0005";
   }
-  if (vehicle.value == "3") {
+  if (vehicle.value == "03") {
     vehicle.value = "14-2603";
   }
-  if (vehicle.value == "4") {
+  if (vehicle.value == "33") {
     vehicle.value = "14-2633";
   }
-  if (vehicle.value == "5") {
+  if (vehicle.value == "99") {
     vehicle.value = "14-2399";
   }
   if (BillNo.value == "") {

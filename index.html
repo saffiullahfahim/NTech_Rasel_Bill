@@ -193,6 +193,7 @@
           <option value="11-0006"></option>
           <option value="14-2633"></option>
           <option value="14-2399"></option>
+          <option value="14-2622"></option>
         </datalist>
 
         <div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 20px;">
@@ -257,6 +258,18 @@
             "
             ><b>99 :</b> 14-2399</span
           >
+          <span
+          onclick="vehicle.value = '14-2622'; vehicle.focus()"
+            style="
+              font: 300 15px 'Nirmala UI';
+              padding: 3px;
+              border: 0.5px dotted #000;
+              margin-left: 10px;
+              margin-top: 5px;
+              cursor: pointer;
+            "
+            ><b>22 :</b> 14-2622</span
+          >
         </div>
         <input type="hidden" autocomplete="off" id="AddBtn" />
         <button
@@ -276,6 +289,18 @@
           Add</button
         ><br /><br /><br />
         <div style="margin: auto; text-align: center; width: max-content">
+          <button
+            id="Reset"
+            style="
+              font: 700 15px 'Nirmala UI';
+              padding: 3px 50px;
+              margin-bottom: 20px;
+              margin-right: 30px;
+              cursor: pointer;
+            "
+          >
+            Reset
+          </button>
           <button
             id="Print"
             style="

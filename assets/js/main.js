@@ -1,13 +1,43 @@
-BillNo.focus();
+let obj = {},
+  formData = {};
 newpage = header.innerHTML;
+if (localStorage["raselBillData"]) {
+  header.innerHTML = localStorage["raselBillData"];
+  formData = JSON.parse(localStorage["raselBillDataForm"]);
+  obj = JSON.parse(localStorage["raselBillDataJSON"]);
+  no = obj.no ? obj.no : "";
+  limit = obj.limit ? obj.limit : "";
+  dataNo = obj.dataNo ? obj.dataNo : "";
+  date1 = obj.date1 ? obj.date1 : "";
+  totalliter = obj.totalliter ? obj.totalliter : "";
+  totaltaka = obj.totaltaka ? obj.totaltaka : "";
+  BillNo.value = formData.BillNo ? formData.BillNo : "";
+  Session.value = formData.Session ? formData.Session : "";
+  document.getElementById("month").value = formData.month ? formData.month : "";
+} else {
+  no = 0;
+  limit = 0;
+  dataNo = 0;
+  date1 = "";
+  totalliter = 0;
+  totaltaka = 0;
+}
+
+BillNo.focus();
 BillNo.oninput = function () {
   document.getElementById("billno").innerText = "Bill No. - " + this.value;
+  formData.BillNo = this.value;
+  localStorage["raselBillDataForm"] = JSON.stringify(formData);
 };
 Session.oninput = function () {
   document.getElementById("session").innerText = this.value;
   if (this.value.length == 3) {
     document.getElementById("month").value = this.value;
+    formData.month = this.value;
+    localStorage["raselBillDataForm"] = JSON.stringify(formData);
   }
+  formData.Session = this.value;
+  localStorage["raselBillDataForm"] = JSON.stringify(formData);
 };
 ADDBTN.onclick = function () {
   Add();
@@ -15,6 +45,12 @@ ADDBTN.onclick = function () {
 Print.onclick = function () {
   window.print();
 };
+Reset.onclick = () => {
+  delete localStorage["raselBillData"];
+  delete localStorage["raselBillDataForm"];
+  delete localStorage["raselBillDataJSON"];
+  window.location.reload()
+}
 function intToEnglish(number) {
   var NS = [
     { value: 10000000, str: "Crore" },
@@ -72,11 +108,13 @@ function intToEnglish(number) {
   return result;
 }
 
-no = 0;
-limit = 0;
-date1 = "";
-totalliter = 0;
-totaltaka = 0;
+const addIntervalData = (data) => {
+  let interval = document.querySelectorAll(".i");
+  for (let x of interval) {
+    x.innerText = data;
+  }
+};
+
 function Add() {
   if (vehicle.value == "60") {
     vehicle.value = "14-0660";
@@ -93,6 +131,9 @@ function Add() {
   if (vehicle.value == "99") {
     vehicle.value = "14-2399";
   }
+  if (vehicle.value == "22") {
+    vehicle.value = "14-2622";
+  }
   if (BillNo.value == "") {
     BillNo.focus();
   } else if (Session.value == "") {
@@ -107,15 +148,16 @@ function Add() {
     vehicle.focus();
   } else if (liter.value == "") {
     liter.focus();
-  } 
+  }
   // else if (AddBtn.value == "") {
   //   AddBtn.value = "done";
   //   ADDBTN.focus();
-  // } 
+  // }
   else {
     var d = new Date(day.value + " " + month.value + " " + year.value);
     limit++;
-    if (limit == 1) {
+    dataNo++;
+    if (dataNo == 1) {
       date1 =
         String(d.getDate()).padStart("2", 0) +
         "-" +
@@ -125,14 +167,15 @@ function Add() {
     }
     if (limit <= 20) {
       no++;
-      interval.innerText =
+      addIntervalData(
         date1 +
-        " to " +
-        String(d.getDate()).padStart("2", 0) +
-        "-" +
-        String(d.getMonth() + 1).padStart("2", 0) +
-        "-" +
-        d.getFullYear();
+          " to " +
+          String(d.getDate()).padStart("2", 0) +
+          "-" +
+          String(d.getMonth() + 1).padStart("2", 0) +
+          "-" +
+          d.getFullYear()
+      );
       var tr = document.createElement("tr");
       var td1 = document.createElement("td");
       var td2 = document.createElement("td");
@@ -177,13 +220,21 @@ function Add() {
       AddBtn.value = "";
       day.focus();
       TOTAL();
+      obj.no = no;
+      obj.limit = limit;
+      obj.dataNo = dataNo;
+      obj.date1 = date1;
+      obj.totalliter = totalliter;
+      obj.totaltaka = totaltaka;
+      localStorage["raselBillData"] = header.innerHTML.trim();
+      localStorage["raselBillDataJSON"] = JSON.stringify(obj);
     } else {
       limit = 0;
       footer.remove();
       Total.remove();
       billno.removeAttribute("id");
       session.removeAttribute("id");
-      interval.removeAttribute("id");
+      // interval.removeAttribute("id");
       table.removeAttribute("id");
 
       header.innerHTML += newpage;
@@ -194,39 +245,6 @@ function Add() {
     }
   }
 }
-
-/*function Print(){
-var tr = document.createElement("tr")
-var td1 = document.createElement("th")
-var td2 = document.createElement("th")
-var td3 = document.createElement("th")
-var td4 = document.createElement("th")
-var td5 = document.createElement("th")
-var td6 = document.createElement("th")
-var td7 = document.createElement("th")
-//td1.setAttribute("contenteditable","")
-//td2.setAttribute("contenteditable","")
-td3.setAttribute("contenteditable","")
-td4.setAttribute("contenteditable","")
-//td5.setAttribute("contenteditable","")
-td6.setAttribute("contenteditable","")
-//td7.setAttribute("contenteditable","")
-////td1.innerText = String(no).padStart('2',0)
-//td2.innerText = String(d.getDate()).padStart('2',0)+"-"+String(d.getMonth()+1).padStart('2',0)+"-"+d.getFullYear()
-td3.innerText = "Total"
-td4.innerText = totalliter
-//td5.innerText = 
-td6.innerText = totaltaka
-table.appendChild(tr)
-tr.appendChild(td1)
-tr.appendChild(td2)
-tr.appendChild(td3)
-tr.appendChild(td4)
-tr.appendChild(td5)
-tr.appendChild(td6)
-tr.appendChild(td7)
-window.print()
-}*/
 
 function TOTAL() {
   Total.remove();

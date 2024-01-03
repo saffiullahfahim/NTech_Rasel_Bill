@@ -40,7 +40,7 @@ Session.oninput = function () {
   localStorage["raselBillDataForm"] = JSON.stringify(formData);
 };
 ADDBTN.onclick = function () {
-  Add();
+  //Add();
 };
 Print.onclick = function () {
   window.print();

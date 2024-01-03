@@ -10,7 +10,7 @@
   <body class="A4">
     <div class="inputdata">
       <iframe name="hide" style="display: none"></iframe>
-      <form target="hide">
+      <form target="hide" onsubmit="event.preventDefault(); Add();">
         <div
           style="
             font: 700 20px 'Nirmala UI';
@@ -274,6 +274,7 @@
         <input type="hidden" autocomplete="off" id="AddBtn" />
         <button
           id="ADDBTN"
+          type="submit"
           style="
             font: 700 15px 'Nirmala UI';
             padding: 3px 20px;
@@ -291,6 +292,7 @@
         <div style="margin: auto; text-align: center; width: max-content">
           <button
             id="Reset"
+            type="button"
             style="
               font: 700 15px 'Nirmala UI';
               padding: 3px 50px;
@@ -303,6 +305,7 @@
           </button>
           <button
             id="Print"
+            type="button"
             style="
               font: 700 15px 'Nirmala UI';
               padding: 3px 50px;
